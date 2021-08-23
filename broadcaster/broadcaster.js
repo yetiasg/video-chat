@@ -1,3 +1,4 @@
+'use strict'
 const webSocket = new WebSocket('ws://localhost:3000');
 
 webSocket.onmessage = (event) => {
@@ -7,10 +8,12 @@ webSocket.onmessage = (event) => {
 function handleSignallingData(data) {
     switch (data.type) {
         case "answer":
-            peerConn.setRemoteDescription(data.answer)
+            peerConn.setRemoteDescription(new RTCSessionDescription(data.answer))
+
             break
         case "candidate":
             peerConn.addIceCandidate(data.candidate)
+            break
     }
 }
 
@@ -37,7 +40,7 @@ function startCall() {
 
     navigator.getUserMedia({
         video: {
-            frameRate: 24,
+            frameRate: 30,
             width: {
                 min: 480, ideal: 720, max: 1280
             },
