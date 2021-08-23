@@ -11,20 +11,19 @@
   <div class="container">
     <div>
       <input type="text" placeholder="Enter username" id="username-input">
-      <button onclick="sendUsername()">Send</button>
-      <button onclick="startCall()">Strat Call</button>
+      <button onclick="joinCall()">Join Call</button>
     </div>
     <section id="video-call-container">
       <div id="video-call-elements">
-        <video muted id="local-video" autoplay title="local-video"></video>
-        <video muted id="remote-video" autoplay title="remote-video"></video>
+        <video id="local-video" autoplay title="local-video"></video>
+        <video id="remote-video" autoplay title="remote-video"></video>
       </div>
       <div class="call-action-div">
         <button onclick="muteVideo()">Mute Video</button>
         <button onclick="muteAudio()">Mute Audio</button>
       </div>
     </section>
-    <script defer src="./broadcaster.js"></script>
+    <script defer src="./receiver.js"></script>
   </div>
 </body>
 </html>
